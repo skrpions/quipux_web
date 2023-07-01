@@ -30,7 +30,7 @@ export class AuthApplication {
     });
   }
 
-  private userRegistered(response: TokenEntity) {
+  private userRegistered(response: any) {
     console.log('User added', response);
     this.router.navigateByUrl('/login');
   }

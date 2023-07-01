@@ -36,8 +36,9 @@ export class RegisterComponent {
       //this.isSubmitting = true;
 
       if (this.reactiveForm.valid) {
-        const values = this.reactiveForm.value;
-        this.router.navigate(['/login']);
+        const data = this.reactiveForm.value;
+        this.authApplication.register(data);
+        //this.router.navigate(['/login']);
 
         //const auth = AuthFactory.create(values.email, values.password);
         //this.authApplication.login(values);
