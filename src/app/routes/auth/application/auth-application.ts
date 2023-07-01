@@ -32,7 +32,7 @@ export class AuthApplication {
 
   private userRegistered(response: any) {
     console.log('User added', response);
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('auth/login');
   }
 
   private userAuthenticated(response: TokenEntity) {
@@ -43,7 +43,7 @@ export class AuthApplication {
 
 
     this.userLogged = true;
-    this.router.navigateByUrl('/register');
+    this.router.navigateByUrl('auth/register');
   }
 
   private showMessageError(error: any) {
