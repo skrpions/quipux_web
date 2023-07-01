@@ -1,0 +1,36 @@
+<div class="play-list-header">
+  <div class="cover">
+      <div class="cover-mock">
+          <i class="uil uil-heart"></i>
+      </div>
+  </div>
+  <div class="content-text">
+      <div class="small-text">Playlist</div>
+      <h1 class="title">Canciones Favoritas</h1>
+      <h5 class="sub-title">Nestor Martínez C. <span class="count-tracks">206 canciones</span> </h5>
+  </div>
+</div>
+
+
+<div class="play-list-body">
+  <ul class="play-list-table-header">
+      <li>Nombre ❤</li>
+      <li>Álbum 🆗</li>
+      <li>Fecha Incorporación 🍌😁</li>
+      <li><i class="uil uil-clock-eight"></i></li>
+  </ul>
+
+</div>
+
+<!--template del cover-->
+<ng-template #coverSection let-song="propiedad1">
+
+  <div class="cover-section">
+      <img appImgBroken class="cover-track" [src]="song.cover" [alt]="song.name">
+      <div class="cover-info">
+          <div class="name-track">{{song.name}}</div>
+          <div class="name-track-details">{{song.artist.name}}</div>
+      </div>
+  </div>
+
+</ng-template>

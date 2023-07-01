@@ -34,7 +34,7 @@ export class LoginComponent {
 
       if (this.reactiveForm.valid) {
         const values = this.reactiveForm.value;
-        this.router.navigate(['home']);
+        this.router.navigate(['home/favorites']);
 
         //const auth = AuthFactory.create(values.email, values.password);
         //this.authApplication.login(values);
