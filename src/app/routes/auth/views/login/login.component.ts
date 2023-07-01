@@ -28,16 +28,16 @@ export class LoginComponent {
       });
     }
 
-    public sendLogin(): void {
+    public send(): void {
 
       //this.isSubmitting = true;
 
       if (this.reactiveForm.valid) {
         const values = this.reactiveForm.value;
-        console.log('Form is valid', values);
+        this.router.navigate(['/register']);
 
         //const auth = AuthFactory.create(values.email, values.password);
-        this.authApplication.login(values);
+        //this.authApplication.login(values);
         /*       console.log('Form is valid');
         console.log(this.group.value);
          this.router.navigate(['/driver']);*/ //   driver/list

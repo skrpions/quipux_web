@@ -5,15 +5,19 @@ import { Observable } from "rxjs";
 import { AuthEntity } from "../domain/entities/auth-entity";
 import { TokenEntity } from "../domain/entities/token-entity";
 import { environment } from 'src/environments/environment';
+import { RegisterEntity } from '../domain/entities/register-entity';
 
 @Injectable()
 export class AuthInfrastructure implements AuthRepository {
 
-
-
   constructor(private http: HttpClient) { }
+
+  register(data: RegisterEntity): Observable<any> {
+    return this.http.post<any>(`${environment.apiPath}/auth/register`, data);
+  }
 
   login(auth: AuthEntity): Observable<any> {
     return this.http.post<any>(`${environment.apiPath}/auth/login`, auth);
   }
+
 }

@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://app.quipux.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

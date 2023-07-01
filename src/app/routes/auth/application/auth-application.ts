@@ -16,6 +16,13 @@ export class AuthApplication {
     private router: Router
   ) {}
 
+  register(data: any) {
+    this.authRepository.register(data).subscribe({
+      next: this.userRegistered.bind(this),
+      error: this.showMessageError,
+    });
+  }
+
   login(auth: any) {
     this.authRepository.login(auth).subscribe({
       next: this.userAuthenticated.bind(this),
@@ -23,10 +30,16 @@ export class AuthApplication {
     });
   }
 
+  private userRegistered(response: TokenEntity) {
+    console.log('User added', response);
+    this.router.navigateByUrl('/login');
+  }
+
   private userAuthenticated(response: TokenEntity) {
     console.log('✅ Teto', response);
 
-    this.storageRepository.setStorage('accessToken', response.token);
+    //this.storageRepository.setStorage('accessToken', response.token);
+    this.storageRepository.setStorage('token', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza3NtYXJ0aW5lekBnbWFpbC5jb20iLCJpYXQiOjE2ODgyMzcyNjUsImV4cCI6MTY4ODI4MDQ2NX0.pjw-YEmWOBYyBW1EVRSpLGT9TPSkzPcIvQltoR_53nBLwUW8kluVZDsjfZXiluNRBXRBgP_8lbCKheosLNTugA');
 
 
     this.userLogged = true;
@@ -38,7 +51,7 @@ export class AuthApplication {
   }
 
   get isUserLogged(): boolean {
-    const accessToken = this.storageRepository.getStorage('accessToken');
+    const accessToken = this.storageRepository.getStorage('token');
 
     return !!accessToken || this.userLogged;
   }

@@ -1,1 +1,57 @@
-<p>register works!</p>
+<div class="login-auth-page">
+  <div class="login-auth-wrapper">
+    <h3>Para continuar, registrate con:</h3>
+    <div class="login-social-zone">
+      <button class="social-btn"><i class="uil uil-google"></i> Continuar con Google</button>
+    </div>
+    <div class="separator"></div>
+    <form (ngSubmit)="send()" [formGroup]="reactiveForm" class="login-auth-form">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" type="text" placeholder="Email o Username"
+          class="form-input">
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" placeholder="Password" class="form-input">
+      </div>
+
+      <!-- Photo -->
+      <div class="form-group">
+        <label for="photo">Photo</label>
+        <input formControlName="photo" type="text" placeholder="Photo"
+          class="form-input">
+      </div>
+
+      <!-- First_Name -->
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input formControlName="first_name" type="text" placeholder="First Name"
+          class="form-input">
+      </div>
+
+      <!-- Apellido -->
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input formControlName="last_name" type="text" placeholder="Last Name"
+          class="form-input">
+      </div>
+
+
+      <div class="form-steps">
+        <a class="link" href="">¿Se te ha olvidado la contraseña?</a>
+      </div>
+      <div *ngIf="errorSession">
+        Ocurrio un error con tu email o contraseña
+      </div>
+      <div class="form-action">
+        <button [disabled]="reactiveForm.invalid" class="login social-btn">Register</button>
+      </div>
+    </form>
+  </div>
+
+</div>
