@@ -15,6 +15,7 @@ export class DetailPlaylistComponent {
 
   filtro = '';
   reactiveForm!: FormGroup;
+  playlistId!: number ;
   playlistName: string = '' ;
   playlist: PlaylistEntity =
     {
@@ -53,8 +54,12 @@ export class DetailPlaylistComponent {
     });
 
     this.initForm();
+
     // Quemado
+    this.playlistId =  this.playlist.id!;
+    console.log('playlistId: ', this.playlistId);
     this.songs = this.playlist.songs; // TODO: Descomentar la linea de producción cuando no haya error de CORS
+
 
     // Producción
     //this.getSongsByPlaylist();
@@ -93,7 +98,9 @@ export class DetailPlaylistComponent {
   private getSongsByPlaylist() {
     this.playlistApplication.listOne(this.playlistName).subscribe({
       next: data => {
+        this.playlistId = data.id!;
         this.songs = data.songs;
+
       },
     });
   }
@@ -101,12 +108,17 @@ export class DetailPlaylistComponent {
   addSong() {
 
     if (this.reactiveForm.valid) {
+
+      const formData = { ...this.reactiveForm.value };
+
+      // Agregar la nueva propiedad "idListaDeReproduccion"
+      formData.idListaDeReproduccion = this.playlistId;
+
       // Quemado
-      this.songs.unshift(this.reactiveForm.value);
+      this.songs.unshift(formData);
 
       // Producción
-      //const data = this.reactiveForm.value;
-      //this.songApplication.insert(data);
+      //this.songApplication.insert(formData);
     } else {
       console.log('Form is invalid');
     }
