@@ -88,8 +88,13 @@ export class ListPlaylistsComponent {
     this.listas.unshift(nuevaPlaylist);
   }
 
-  deletePlaylist(index: number) {
+  deletePlaylist(namePlaylist: any) {
+    console.log('namePlaylist: ', namePlaylist);
+
     // Eliminar la lista del arreglo utilizando el índice proporcionado
-    this.listas.splice(index, 1);
+    this.listas.splice(namePlaylist, 1);
+
+    // Producción
+    //this.playlistApplication.delete(namePlaylist);
   }
 }
