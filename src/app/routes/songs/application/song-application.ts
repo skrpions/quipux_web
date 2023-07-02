@@ -8,8 +8,8 @@ export class SongApplication {
 
   constructor(@Inject(SongInfrastructure) private readonly songRepository: SongRepository) {}
 
-  insert(entity: Partial<SongEntity>) {
-    return this.songRepository.insert(entity);
+  insert(song: Partial<SongEntity>) {
+    return this.songRepository.insert(song);
   }
 
   delete(id: number) {
