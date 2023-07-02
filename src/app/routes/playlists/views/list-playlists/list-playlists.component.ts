@@ -65,6 +65,14 @@ export class ListPlaylistsComponent {
     });
   }
 
+  get nombreListaField() {
+    return this.reactiveForm.get('nombreLista');
+  }
+
+  get descripcionField() {
+    return this.reactiveForm.get('descripcion');
+  }
+
   private getAll() {
     this.playlistApplication.list().subscribe({
       next: data => {

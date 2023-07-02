@@ -3,10 +3,28 @@
     <div class="col-md-3">
       <label for="playlist" class="visually-hidden">Playlist</label>
       <input type="text" formControlName="nombreLista" class="form-control" id="nombreLista" placeholder="Nombre" >
+      <span *ngIf="nombreListaField?.errors && nombreListaField?.touched">
+        <p *ngIf="nombreListaField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="nombreListaField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
     <div class="col-md-5">
       <label for="descripcion" class="visually-hidden">Descripción</label>
       <input type="text" formControlName="descripcion" class="form-control" id="descripcion" placeholder="Descripción" >
+      <span *ngIf="descripcionField?.errors && descripcionField?.touched">
+        <p *ngIf="descripcionField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="descripcionField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
     <div class="col-md-2">
       <button type="submit" class="btn btn-primary mb-3">{{'label.add' | translate}}</button>

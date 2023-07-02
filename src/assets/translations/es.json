@@ -3,6 +3,7 @@
   "label.description": "Descripción",
   "label.add": "Nuevo",
   "label.see": "Ver",
-  "label.delete": "Eliminar"
-
+  "label.delete": "Eliminar",
+  "label.required": "Requerido",
+  "label.maximum_limit": "Te pasaste, máximo deben haber 50 caracteres."
 }
