@@ -61,7 +61,7 @@ export class ListPlaylistsComponent {
   private initForm(): void {
     this.reactiveForm = this.fb.nonNullable.group({
       nombreLista: ['Cumbia', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-      descripcion: ['Musica Cumbia', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
+      descripcion: ['Musica Bailable', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
     });
   }
 
@@ -86,14 +86,23 @@ export class ListPlaylistsComponent {
 
   addPlaylist() {
 
-    const nuevaPlaylist = {
-      nombreLista: this.reactiveForm.value.nombreLista,
-      descripcion: this.reactiveForm.value.descripcion,
-      songs: [],
-      location: null
-    };
+    if (this.reactiveForm.valid) {
 
-    this.listas.unshift(nuevaPlaylist);
+      const nuevaPlaylist = {
+        nombreLista: this.reactiveForm.value.nombreLista,
+        descripcion: this.reactiveForm.value.descripcion,
+        songs: [],
+        location: null
+      };
+
+      // Quemado
+      this.listas.unshift(nuevaPlaylist);
+
+      // Producción
+      //this.playlistApplication.insert(nuevaPlaylist);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   deletePlaylist(namePlaylist: any) {

@@ -67,11 +67,11 @@ export class DetailPlaylistComponent {
 
   private initForm(): void {
     this.reactiveForm = this.fb.nonNullable.group({
-      titulo: ['Botella', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      artista: ['Cristian Nodal', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
-      album: ['Xsa', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      anno: ['2022', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-      genero: ['Reguetton', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      artista: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      album: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      anno: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      genero: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
     });
   }
 
