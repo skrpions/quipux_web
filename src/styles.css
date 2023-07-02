@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 :root {
   --color-1: #1DB954;
   --color-2: #323232;
@@ -16,8 +17,9 @@
   --animation-1: 200ms;
 }
 
-html,
-body {
+html, body {
+  overflow: hidden;
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--color-3);
@@ -25,6 +27,21 @@ body {
   font-size: var(--font-size-1);
   color: var(--color-4);
 }
+
+.play-list-body {
+  overflow: auto;
+  padding: 1rem 2rem;
+}
+
+.play-list-table-header {
+  /* Estilos existentes */
+}
+
+.play-list-rows {
+  /* Estilos existentes */
+}
+
+/* Resto de los estilos existentes */
 
 input,
 button {

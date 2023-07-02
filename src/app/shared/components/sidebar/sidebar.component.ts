@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+
+  animal!: string;
+  name!: string;
   mainMenu: { defaultOptions: any[], accessLink: any[] } = { defaultOptions: [], accessLink: [] }
 
   customOptions: any[] = []
@@ -20,19 +23,19 @@ export class SidebarComponent {
               icon: 'uil uil-estate',
               router: ['/', 'favorites']
           },
-         /*  {
-              name: 'Buscar',
-              icon: 'uil uil-search',
-              router: ['/', 'history']
-          } */
+          {
+            name: 'Listas',
+            icon: 'uil-plus-square',
+            router: ['/', 'playlist']
+        }
       ]
 
       this.mainMenu.accessLink = [
-          {
+         /*  {
               name: 'Crear lista',
               icon: 'uil-plus-square',
               router: ['/', 'playlist']
-          }
+          } */
       ]
 
       this.customOptions = [
@@ -55,5 +58,6 @@ export class SidebarComponent {
       ]
 
   }
+
 
 }

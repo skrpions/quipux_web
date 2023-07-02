@@ -12,11 +12,11 @@ const routes: Routes = [
     component: HomeComponent,
     loadChildren: () => import('./routes/home/home.module').then(m => m.HomeModule),
    /*  canActivate: [SessionGuard] */
-  },
+  }/* ,
   {
     path: '**',
     redirectTo: '/login'
-  }
+  } */
 ];
 
 @NgModule({

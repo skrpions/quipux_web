@@ -1,1 +1,35 @@
-<p>list-playlists works!</p>
+<div>
+  <form [formGroup]="reactiveForm"  (ngSubmit)="addPlaylist()" class="row g-3" style="margin-top: 10px; margin-left: 25px;">
+    <div class="col-md-3">
+      <label for="playlist" class="visually-hidden">Playlist</label>
+      <input type="text" formControlName="nombreLista" class="form-control" id="nombreLista" placeholder="Nombre" >
+    </div>
+    <div class="col-md-5">
+      <label for="descripcion" class="visually-hidden">Descripción</label>
+      <input type="text" formControlName="descripcion" class="form-control" id="descripcion" placeholder="Descripción" >
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary mb-3">Add</button>
+    </div>
+  </form>
+
+  <div class="play-list-body">
+    <ul class="play-list-table-header">
+      <li>Nombre ❤</li>
+      <li>Descripción 🆗</li>
+      <li><i class="uil uil-clock-eight"></i></li>
+    </ul>
+    <ul class="play-list-rows" *ngFor="let lista of listas; let i = index">
+      <li class="track-name-opacity">
+       {{ lista.nombreLista }}
+      </li>
+      <li class="track-name-opacity">
+       {{ lista.descripcion }}
+      </li>
+      <li class="track-actions">
+        <button type="submit" class="btn btn-secondary btn-sm see-button" routerLink="detail/1">See</button>
+        <button type="submit" class="btn btn-secondary btn-sm" (click)="deletePlaylist(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

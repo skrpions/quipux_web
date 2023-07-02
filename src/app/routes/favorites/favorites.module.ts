@@ -5,13 +5,16 @@ import { FavoritesRoutingModule } from './favorites-routing.module';
 import { ListFavoritesComponent } from './views/list-favorites/list-favorites.component';
 
 
+
+
 @NgModule({
   declarations: [
     ListFavoritesComponent
   ],
   imports: [
     CommonModule,
-    FavoritesRoutingModule
+    FavoritesRoutingModule,
+
   ]
 })
 export class FavoritesModule { }

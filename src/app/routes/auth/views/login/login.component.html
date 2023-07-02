@@ -1,11 +1,12 @@
 <div class="login-auth-page">
   <div class="login-auth-wrapper">
-      <h3>Inicia sesión en Quipux Web con:</h3>
+      <h3>Quipux</h3>
+      <br>
       <div class="login-social-zone">
           <button class="social-btn"><i class="uil uil-google"></i> Continuar con Google</button>
       </div>
       <div class="separator"></div>
-      <form (ngSubmit)="send()" [formGroup]="reactiveForm" class="login-auth-form">
+      <form [formGroup]="reactiveForm" (ngSubmit)="send()" class="login-auth-form">
           <div class="form-group">
               <label for="username">Email</label>
               <input formControlName="username" type="text" placeholder="Email o Username"

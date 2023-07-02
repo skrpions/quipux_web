@@ -1,0 +1,52 @@
+<div>
+  <form [formGroup]="reactiveForm"  (ngSubmit)="addSong()" class="row g-3" style="margin-top: 10px; margin-left: 25px;">
+    <div class="col-md-2">
+      <label for="titulo" class="visually-hidden">Titulo</label>
+      <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo" >
+    </div>
+    <div class="col-md-2">
+      <label for="artista" class="visually-hidden">Artista</label>
+      <input type="text" formControlName="artista" class="form-control" placeholder="Artista" >
+    </div>
+    <div class="col-md-2">
+      <label for="album" class="visually-hidden">Album</label>
+      <input type="text" formControlName="album" class="form-control" placeholder="Album" >
+    </div>
+    <div class="col-md-2">
+      <label for="anno" class="visually-hidden">Año</label>
+      <input type="text" formControlName="anno" class="form-control" placeholder="Año" >
+    </div>
+    <div class="col-md-2">
+      <label for="genero" class="visually-hidden">Genero</label>
+      <input type="text" formControlName="genero" class="form-control" placeholder="Genero" >
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary mb-3">Add</button>
+    </div>
+  </form>
+
+  <div class="play-list-body">
+    <ul class="play-list-table-header">
+      <li>Titulo </li>
+      <li>Artista </li>
+      <li>Album </li>
+      <li><i class="uil uil-clock-eight"></i></li>
+    </ul>
+    <ul class="play-list-rows" *ngFor="let song of songs; let i = index">
+      <li class="track-name-opacity">
+       {{ song.titulo }}
+      </li>
+      <li class="track-name-opacity">
+       {{ song.artista }}
+      </li>
+      <li class="track-name-opacity">
+       {{ song.album }}
+      </li>
+
+      <li class="track-actions">
+        <button type="submit" class="btn btn-secondary btn-sm" (click)="deleteSong(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
