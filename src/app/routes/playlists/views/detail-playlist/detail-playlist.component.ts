@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlaylistApplication } from '../../application/playlist-application';
 import { SongApplication } from 'src/app/routes/songs/application/song-application';
+import { ActivatedRoute } from '@angular/router';
+import { PlaylistEntity } from '../../domain/entities/playlist-entity';
+import { SongEntity } from 'src/app/routes/songs/domain/entities/song-entity';
 
 @Component({
   selector: 'app-detail-playlist',
@@ -12,8 +15,8 @@ export class DetailPlaylistComponent {
 
   filtro = '';
   reactiveForm!: FormGroup;
-  dataSource: any[] = [];
-  playlist =
+  playlistName: string = '' ;
+  playlist: PlaylistEntity =
     {
       "id": 30,
       "nombreLista": "Electrónica",
@@ -31,19 +34,30 @@ export class DetailPlaylistComponent {
       ],
       "location": null
     };
-  songs: any[] = [];
+  songs: SongEntity[] = [];
 
   constructor(private fb: FormBuilder,
+    private readonly route: ActivatedRoute,
     private readonly playlistApplication: PlaylistApplication,
     private readonly songApplication: SongApplication){
-    //this.getAllSongs();
+
   }
 
   ngOnInit(): void {
 
-    this.initForm();
+    this.route.params.subscribe(params => {
+      console.log('params: ', params);
+      // Accede a los parámetros de la ruta
+      this.playlistName = params['id']; // 'id' es el nombre del parámetro en la ruta
 
-    this.songs = this.playlist.songs;
+    });
+
+    this.initForm();
+    // Quemado
+    this.songs = this.playlist.songs; // TODO: Descomentar la linea de producción cuando no haya error de CORS
+
+    // Producción
+    //this.getSongsByPlaylist();
   }
 
   private initForm(): void {
@@ -56,13 +70,10 @@ export class DetailPlaylistComponent {
     });
   }
 
-  private getAllSongs() {
-    this.playlistApplication.list().subscribe({
+  private getSongsByPlaylist() {
+    this.playlistApplication.listOne(this.playlistName).subscribe({
       next: data => {
-
-        this.dataSource = data;
-        console.log('this.dataSource', this.dataSource);
-
+        this.songs = data.songs;
       },
     });
   }
@@ -82,11 +93,14 @@ export class DetailPlaylistComponent {
   }
 
   deleteSong(id: number) {
+
+    console.log('id to delete', id);
+
     // Eliminar la lista del arreglo utilizando el índice proporcionado
-    this.songs.splice(id, 1);
+    //this.songs.splice(id, 1);
 
     // Producción
-    //this.songApplication.delete(id);
+    this.songApplication.delete(id);
   }
 
 }

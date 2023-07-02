@@ -30,8 +30,6 @@ export class LoginComponent {
 
     public send(): void {
 
-      //this.isSubmitting = true;
-
       if (this.reactiveForm.valid) {
         const values = this.reactiveForm.value;
         this.router.navigate(['home/favorites']);

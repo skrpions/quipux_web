@@ -32,15 +32,12 @@ export class AuthApplication {
 
   private userRegistered(response: any) {
     console.log('User added', response);
-    this.router.navigateByUrl('auth/login');
+    this.router.navigateByUrl('/');
   }
 
   private userAuthenticated(response: TokenEntity) {
-    console.log('✅ Teto', response);
 
-    //this.storageRepository.setStorage('accessToken', response.token);
-    this.storageRepository.setStorage('token', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza3NtYXJ0aW5lekBnbWFpbC5jb20iLCJpYXQiOjE2ODgyMzcyNjUsImV4cCI6MTY4ODI4MDQ2NX0.pjw-YEmWOBYyBW1EVRSpLGT9TPSkzPcIvQltoR_53nBLwUW8kluVZDsjfZXiluNRBXRBgP_8lbCKheosLNTugA');
-
+    this.storageRepository.setStorage('token', response.token);
 
     this.userLogged = true;
     this.router.navigateByUrl('home/favorites');

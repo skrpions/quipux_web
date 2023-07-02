@@ -7,7 +7,7 @@ interface SongEssentials {
 }
 
 interface SongOptionals {
-  id: string;
+  id: number;
   idListaDeReproduccion: number;
 }
 

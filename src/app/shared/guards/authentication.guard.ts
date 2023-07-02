@@ -20,8 +20,9 @@ export const authenticationGuard: CanActivateFn = (route, state) => {
  function userAuthenticated(): boolean {
 
   const auth: any = inject(AuthApplication);
-  const isLogged = true;
-  //const isLogged = auth.isUserLogged; // TODO: Cuando no haya problema de cors, debo descomentar esta linea
+  //const isLogged = true;
+  const isLogged = auth.isUserLogged; // TODO: Cuando no haya problema de cors, debo descomentar esta linea
+  console.log('isLogged: ' + isLogged);
 
   if (!isLogged) {
     return auth.logout();

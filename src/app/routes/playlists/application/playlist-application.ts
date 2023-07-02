@@ -11,6 +11,10 @@ export class PlaylistApplication {
     return this.playlistRepository.list();
   }
 
+  listOne(name: string) {
+    return this.playlistRepository.listOne(name);
+  }
+
   insert(playlist: Partial<PlaylistEntity>) {
     return this.playlistRepository.insert(playlist);
   }

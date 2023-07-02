@@ -13,7 +13,7 @@ export class ListPlaylistsComponent {
   filtro = '';
   reactiveForm!: FormGroup;
   dataSource:PlaylistEntity[] = [];
-  listas = [
+  listas: PlaylistEntity[] = [
     {
       "id": 8,
       "nombreLista": "Test 5",
@@ -79,7 +79,6 @@ export class ListPlaylistsComponent {
   addPlaylist() {
 
     const nuevaPlaylist = {
-      id: 123,
       nombreLista: this.reactiveForm.value.nombreLista,
       descripcion: this.reactiveForm.value.descripcion,
       songs: [],
