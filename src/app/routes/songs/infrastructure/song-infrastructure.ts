@@ -7,9 +7,6 @@ import { environment } from "src/environments/environment";
 
 @Injectable()
 export class SongInfrastructure {
-  private token = this.storageApplication.getField('token');
-  /* private accessToken =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODMyNTk3NzcsImV4cCI6MTY4MzI2MDM3NywibmFtZSI6IlNlcmdpbyBIaWRhbGdvIiwiZW1haWwiOiJzZXJnaW9AY29ycmVvLmNvbSIsInJvbGVzIjpbIkFETUlOIiwiT1BFUkFUT1IiXX0.Hh5R3y3tKeoL6tUUJQt7n837pY-TwOVFn5yYVKCEaOc'; */
 
   constructor(
     private readonly http: HttpClient,
@@ -17,15 +14,11 @@ export class SongInfrastructure {
   ) {}
 
   insert(song: Partial<SongEntity>): Observable<SongEntity> {
-    return this.http.post<SongEntity>(`${environment.apiPath}/`, song, {
-      headers: { Authorization: 'Bearer ' + this.token },
-    });
+    return this.http.post<SongEntity>(`${environment.apiPath}/`, song);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<SongEntity>(`${environment.apiPath}/${id}`, {
-      headers: { Authorization: 'Bearer ' + this.token },
-    });
+    return this.http.delete<SongEntity>(`${environment.apiPath}/${id}`);
   }
 
 }

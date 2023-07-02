@@ -21,10 +21,10 @@
     </ul>
     <ul class="play-list-rows" *ngFor="let lista of listas; let i = index">
       <li class="track-name-opacity">
-       {{ lista.nombreLista }}
+       {{ lista.nombreLista | titlecase }}
       </li>
       <li class="track-name-opacity">
-       {{ lista.descripcion }}
+       {{ lista.descripcion | titlecase }}
       </li>
       <li class="track-actions">
         <button type="submit" class="btn btn-secondary btn-sm see-button" routerLink="detail/1">See</button>

@@ -35,13 +35,13 @@
     </ul>
     <ul class="play-list-rows" *ngFor="let song of songs; let i = index">
       <li class="track-name-opacity">
-       {{ song.titulo }}
+       {{ song.titulo | titlecase }}
       </li>
       <li class="track-name-opacity">
-       {{ song.artista }}
+       {{ song.artista | titlecase }}
       </li>
       <li class="track-name-opacity">
-       {{ song.album }}
+       {{ song.album | titlecase }}
       </li>
 
       <li class="track-actions">

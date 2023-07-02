@@ -7,12 +7,13 @@ import { AuthApplication } from './routes/auth/application/auth-application';
 import { StorageApplication } from './routes/auth/application/storage-application';
 import { AuthInfrastructure } from './routes/auth/infrastructure/auth-infrastructure';
 import { StorageInfrastructure } from './routes/auth/infrastructure/storage-infrastructure';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlaylistApplication } from './routes/playlists/application/playlist-application';
 import { PlaylistInfrastructure } from './routes/playlists/infrastructure/playlist-infrastructure';
 import { SongApplication } from './routes/songs/application/song-application';
 import { SongInfrastructure } from './routes/songs/infrastructure/song-infrastructure';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 // Declaron constantes para los providers
 const application = [
@@ -29,6 +30,10 @@ const infrastructure = [
   SongInfrastructure
 ];
 
+const interceptors = [
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+]
+
 @NgModule({
   declarations: [
     AppComponent
@@ -42,6 +47,7 @@ const infrastructure = [
   providers: [
     ...application,
     ...infrastructure,
+    ...interceptors
   ],
   bootstrap: [AppComponent]
 })
