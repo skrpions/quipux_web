@@ -50,7 +50,7 @@ export class ListPlaylistsComponent {
   ];
 
   constructor(private fb: FormBuilder,  private readonly playlistApplication: PlaylistApplication){
-    this.getAll();
+    //this.getAll();
   }
 
   ngOnInit(): void {

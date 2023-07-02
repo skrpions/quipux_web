@@ -13,8 +13,8 @@ export class RegisterComponent {
   public reactiveForm!: FormGroup;
     public errorSession: boolean = false;
 
-    constructor(private fb: FormBuilder, private router: Router, private authApplication: AuthApplication) { }
-
+    constructor(private fb: FormBuilder,
+      private authApplication: AuthApplication) { }
 
     ngOnInit(): void {
 
@@ -33,18 +33,9 @@ export class RegisterComponent {
 
     public send(): void {
 
-      //this.isSubmitting = true;
-
       if (this.reactiveForm.valid) {
         const data = this.reactiveForm.value;
         this.authApplication.register(data);
-        //this.router.navigate(['/login']);
-
-        //const auth = AuthFactory.create(values.email, values.password);
-        //this.authApplication.login(values);
-        /*       console.log('Form is valid');
-        console.log(this.group.value);
-         this.router.navigate(['/driver']);*/ //   driver/list
       } else {
         console.log('Form is invalid');
       }

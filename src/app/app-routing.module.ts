@@ -4,7 +4,7 @@ import { HomeComponent } from './routes/home/views/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('./routes/auth/auth.module').then(m => m.AuthModule)
   },
   {

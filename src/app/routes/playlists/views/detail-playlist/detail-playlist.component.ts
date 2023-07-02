@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlaylistApplication } from '../../application/playlist-application';
+import { SongApplication } from 'src/app/routes/songs/application/song-application';
 
 @Component({
   selector: 'app-detail-playlist',
@@ -32,8 +33,10 @@ export class DetailPlaylistComponent {
     };
   songs: any[] = [];
 
-  constructor(private fb: FormBuilder,  private readonly playlistApplication: PlaylistApplication){
-    this.getAllSongs();
+  constructor(private fb: FormBuilder,
+    private readonly playlistApplication: PlaylistApplication,
+    private readonly songApplication: SongApplication){
+    //this.getAllSongs();
   }
 
   ngOnInit(): void {
@@ -45,11 +48,11 @@ export class DetailPlaylistComponent {
 
   private initForm(): void {
     this.reactiveForm = this.fb.nonNullable.group({
-      titulo: ['Botella', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-      artista: ['Cristian Nodal', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-      album: ['Xsa', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-      anno: ['2022', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-      genero: ['Reguetton', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
+      titulo: ['Botella', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      artista: ['Cristian Nodal', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      album: ['Xsa', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      anno: ['2022', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      genero: ['Reguetton', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
     });
   }
 
@@ -65,12 +68,25 @@ export class DetailPlaylistComponent {
   }
 
   addSong() {
-    this.songs.unshift(this.reactiveForm.value);
+
+    if (this.reactiveForm.valid) {
+      // Quemado
+      this.songs.unshift(this.reactiveForm.value);
+
+      // Producción
+      //const data = this.reactiveForm.value;
+      //this.songApplication.insert(data);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
-  deleteSong(index: number) {
+  deleteSong(id: number) {
     // Eliminar la lista del arreglo utilizando el índice proporcionado
-    this.songs.splice(index, 1);
+    this.songs.splice(id, 1);
+
+    // Producción
+    //this.songApplication.delete(id);
   }
 
 }

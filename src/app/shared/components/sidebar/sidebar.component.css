@@ -48,4 +48,5 @@
 
 .side-bar__list li {
   cursor: pointer;
+  margin-bottom: 10px;
 }

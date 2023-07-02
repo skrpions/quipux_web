@@ -1,14 +1,9 @@
+import { SongEntity } from "src/app/routes/songs/domain/entities/song-entity";
+
 export interface PlaylistEntity {
   id: number;
   nombreLista: string;
   descripcion: string;
-  songs: {
-    id: number;
-    titulo: string;
-    artista: string;
-    album: string;
-    anno: string;
-    genero: string;
-  }[];
+  songs: SongEntity[];
   location: any;
 }

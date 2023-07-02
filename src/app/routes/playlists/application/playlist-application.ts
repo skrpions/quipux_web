@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@angular/core";
 import { PlaylistInfrastructure } from "../infrastructure/playlist-infrastructure";
 import { PlaylistRepository } from "../domain/repositories/playlist-repository";
+import { PlaylistEntity } from "../domain/entities/playlist-entity";
 
 @Injectable()
 export class PlaylistApplication {
@@ -9,4 +10,13 @@ export class PlaylistApplication {
   list() {
     return this.playlistRepository.list();
   }
+
+  insert(playlist: Partial<PlaylistEntity>) {
+    return this.playlistRepository.insert(playlist);
+  }
+
+  delete(name: string) {
+    return this.playlistRepository.delete(name);
+  }
+
 }

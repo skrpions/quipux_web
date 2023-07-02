@@ -11,18 +11,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlaylistApplication } from './routes/playlists/application/playlist-application';
 import { PlaylistInfrastructure } from './routes/playlists/infrastructure/playlist-infrastructure';
+import { SongApplication } from './routes/songs/application/song-application';
+import { SongInfrastructure } from './routes/songs/infrastructure/song-infrastructure';
 
 // Declaron constantes para los providers
 const application = [
   AuthApplication,
   StorageApplication,
-  PlaylistApplication
+  PlaylistApplication,
+  SongApplication
 ];
 
 const infrastructure = [
   AuthInfrastructure,
   StorageInfrastructure,
-  PlaylistInfrastructure
+  PlaylistInfrastructure,
+  SongInfrastructure
 ];
 
 @NgModule({
