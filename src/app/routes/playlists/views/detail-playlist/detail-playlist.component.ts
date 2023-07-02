@@ -70,6 +70,26 @@ export class DetailPlaylistComponent {
     });
   }
 
+  get tituloField() {
+    return this.reactiveForm.get('titulo');
+  }
+
+  get artistaField() {
+    return this.reactiveForm.get('artista');
+  }
+
+  get albumField() {
+    return this.reactiveForm.get('album');
+  }
+
+  get annoField() {
+    return this.reactiveForm.get('anno');
+  }
+
+  get generoField() {
+    return this.reactiveForm.get('genero');
+  }
+
   private getSongsByPlaylist() {
     this.playlistApplication.listOne(this.playlistName).subscribe({
       next: data => {

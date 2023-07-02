@@ -3,22 +3,68 @@
     <div class="col-md-2">
       <label for="titulo" class="visually-hidden">Titulo</label>
       <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo" >
+      <span *ngIf="tituloField?.errors && tituloField?.touched">
+        <p *ngIf="tituloField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="tituloField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
     <div class="col-md-2">
       <label for="artista" class="visually-hidden">Artista</label>
       <input type="text" formControlName="artista" class="form-control" placeholder="Artista" >
+      <span *ngIf="artistaField?.errors && artistaField?.touched">
+        <p *ngIf="artistaField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="artistaField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
     <div class="col-md-2">
       <label for="album" class="visually-hidden">Album</label>
       <input type="text" formControlName="album" class="form-control" placeholder="Album" >
+      <span *ngIf="albumField?.errors && albumField?.touched">
+        <p *ngIf="albumField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="albumField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
     <div class="col-md-2">
       <label for="anno" class="visually-hidden">Año</label>
       <input type="text" formControlName="anno" class="form-control" placeholder="Año" >
+      <span *ngIf="annoField?.errors && annoField?.touched">
+        <p *ngIf="annoField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="annoField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
+
     <div class="col-md-2">
       <label for="genero" class="visually-hidden">Genero</label>
       <input type="text" formControlName="genero" class="form-control" placeholder="Genero" >
+      <span *ngIf="generoField?.errors && generoField?.touched">
+        <p *ngIf="generoField?.hasError('required')">
+          {{'label.required' | translate}} *
+        </p>
+
+        <p *ngIf="generoField?.hasError('maxlength')">
+          {{'label.maximum_limit' | translate}}
+        </p>
+      </span>
     </div>
 
     <div class="col-md-2">
