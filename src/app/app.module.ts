@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { PlaylistInfrastructure } from './routes/playlists/infrastructure/playli
 import { SongApplication } from './routes/songs/application/song-application';
 import { SongInfrastructure } from './routes/songs/infrastructure/song-infrastructure';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { TranslateService } from './shared/services/translate.service';
+import { translateFactory } from './routes/playlists/playlists.module';
 
 // Declaron constantes para los providers
 const application = [
@@ -45,9 +47,16 @@ const interceptors = [
     BrowserAnimationsModule,
   ],
   providers: [
+    TranslateService,{
+      provide: APP_INITIALIZER,
+      useFactory: translateFactory,
+      deps: [TranslateService],
+      multi: true
+    },
     ...application,
     ...infrastructure,
-    ...interceptors
+    ...interceptors,
+
   ],
   bootstrap: [AppComponent]
 })
