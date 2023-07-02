@@ -43,7 +43,7 @@ export class AuthApplication {
 
 
     this.userLogged = true;
-    this.router.navigateByUrl('auth/register');
+    this.router.navigateByUrl('home/favorites');
   }
 
   private showMessageError(error: any) {
@@ -59,8 +59,7 @@ export class AuthApplication {
   logout() {
     this.userLogged = false;
     this.storageRepository.clear();
-    //this.router.navigate(['/auth/login']);
-    this.router.parseUrl('/auth/login');
+    this.router.parseUrl('/');
   }
 
 }

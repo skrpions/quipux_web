@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './routes/home/views/home/home.component';
+import { authenticationGuard } from './shared/guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -11,12 +12,12 @@ const routes: Routes = [
     path: 'home', // (Private) 🚷 Dashboard ...
     component: HomeComponent,
     loadChildren: () => import('./routes/home/home.module').then(m => m.HomeModule),
-   /*  canActivate: [SessionGuard] */
-  }/* ,
+    canActivate: [authenticationGuard]
+  },
   {
     path: '**',
-    redirectTo: '/login'
-  } */
+    redirectTo: '/'
+  }
 ];
 
 @NgModule({
